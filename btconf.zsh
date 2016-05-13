@@ -29,6 +29,7 @@
 	time
 	custom
 	git
+	custom
 	status
 	context
 	dir
