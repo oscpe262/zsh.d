@@ -19,8 +19,6 @@
     BULLETTRAIN_GIT_FG="green"    
     BULLETTRAIN_CONTEXT_SHOW="true"
     BULLETTRAIN_CONTEXT_BG="black"
-    BULLETTRAIN_CONTEXT_FG="green"
-   BULLETTRAIN_CONTEXT_DEFAULT_USER="splatrat"
     BULLETTRAIN_EXEC_TIME_SHOW="false"
     BULLETTRAIN_CUSTOM_MSG=""
     BULLETTRAIN_CUSTOM_BG="green"
@@ -29,7 +27,6 @@
 	time
 	custom
 	git
-	custom
 	status
 	context
 	dir
