@@ -17,15 +17,19 @@
     BULLETTRAIN_GIT_COLORIZE_DIRTY_FG_COLOR="yellow"
     BULLETTRAIN_GIT_BG="black"
     BULLETTRAIN_GIT_FG="green"    
-    BULLETTRAIN_CONTEXT_SHOW="true"
+    BULLETTRAIN_CONTEXT_SHOW="false"
     BULLETTRAIN_CONTEXT_BG="black"
     BULLETTRAIN_EXEC_TIME_SHOW="false"
     BULLETTRAIN_CUSTOM_MSG=""
     BULLETTRAIN_CUSTOM_BG="green"
     BULLETTRAIN_CUSTOM_FG="black"
+    prompt_hostn(){prompt_segment $BULLETTRAIN_CONTEXT_BG $BULLETTRAIN_CONTEXT_FG $HOST}
+    prompt_user(){prompt_segment $BULLETTRAIN_CONTEXT_FG $BULLETTRAIN_CONTEXT_BG $USER}
     BULLETTRAIN_PROMPT_ORDER=(
 	time
-	custom
+#	custom
+	hostn
+	user
 	git
 	status
 	context
