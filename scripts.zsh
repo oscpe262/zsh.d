@@ -1,4 +1,3 @@
-#print "\x1b[32;1mscripts loaded\x1b[0m"
 ## RANDOM SCRIPTS
 photosort() {
     for f in *.jpg
@@ -6,6 +5,14 @@ photosort() {
 	mkdir $(identify -verbose $f | grep exif:DateTime: | cut -c20-29)
 	mv $f $(identify -verbose $f | grep exif:DateTime: | cut -c20-29)
     done
+}
+
+remv() {
+    mkdir tmp
+    cp -ra $1 tmp/
+    rm -r $1
+    mv tmp/$1 .
+    rmdir tmp
 }
 
 splitflac() {
@@ -143,24 +150,3 @@ xoff(){
 }
 
 
-## GIT QUICKS
-
-addrepo() {
-    repo_name=$1
-    token=c647041f4ddc80a25262d30353571f7913694627
-    dir_name=`basename $(pwd)`
-    username=oscpe262
-
-    print "Creating Github repository '$repo_name' ..."
-    curl -u "$username:$token" https://api.github.com/user/repos -d '{"name":"'$dir_name'"}' > /dev/null 2>&1
-    print " done."
-
-    echo -n "Pushing local code to remote ..."
-    echo "# $1" >> README.md
-    git init
-    git add README.md
-    git commit -m "init"
-    git remote add origin git@github.com:oscpe262/$dir_name.git
-    git push -u origin master
-    echo " done."
-}
