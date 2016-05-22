@@ -8,11 +8,11 @@ photosort() {
 }
 
 remv() {
-    mkdir tmp
-    cp -ra $1 tmp/
+    mkdir ../tmp
+    cp -ra $1 ../tmp/
     rm -r $1
-    mv tmp/$1 .
-    rmdir tmp
+    mv ../tmp/$1 .
+    rmdir ../tmp
 }
 
 splitflac() {
