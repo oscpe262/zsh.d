@@ -125,6 +125,20 @@ mssh(){
     else
 	print "\x1b[31;1mMounting /ZFS failed!\x1b[0m"
     fi
+    sshfs -o follow_symlinks splatrat@oscpe262.ddns.net:/ZFS/Music /home/splatrat/Music -C -p 4163
+    if [ $? -eq 0 ]
+    then
+	print "\x1b[32;1m~/Music mounted successfully!\x1b[0m"
+    else
+	print "\x1b[31;1mMounting ~/Music failed!\x1b[0m"
+    fi
+    sshfs -o follow_symlinks splatrat@oscpe262.ddns.net:/ZFS/Videos /home/splatrat/Videos -C -p 4163
+    if [ $? -eq 0 ]
+    then
+	print "\x1b[32;1m~/Videos mounted successfully!\x1b[0m"
+    else
+	print "\x1b[31;1mMounting ~/Videos failed!\x1b[0m"
+    fi
 }
 ussh(){
     print "\x1b[33;1mUnmounting remote filesystems ...\x1b[31;1m"
@@ -137,6 +151,16 @@ ussh(){
     if [ $? -eq 0 ]
     then
 	print "\x1b[32;1m/ZFS unmounted successfully!\x1b[31;1m"
+    fi
+    fusermount -u /home/splatrat/Music
+    if [ $? -eq 0 ]
+    then
+	print "\x1b[32;1m~/Music unmounted successfully!\x1b[31;1m"
+    fi
+    fusermount -u /home/splatrat/Videos
+    if [ $? -eq 0 ]
+    then
+	print "\x1b[32;1m~/Videos unmounted successfully!\x1b[31;1m"
     fi
 }
 
