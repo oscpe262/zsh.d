@@ -152,12 +152,12 @@ ussh(){
     then
 	print "\x1b[32;1m/ZFS unmounted successfully!\x1b[31;1m"
     fi
-    fusermount -u /home/splatrat/Music
+    fusermount -u ~/Music
     if [ $? -eq 0 ]
     then
 	print "\x1b[32;1m~/Music unmounted successfully!\x1b[31;1m"
     fi
-    fusermount -u /home/splatrat/Videos
+    fusermount -u ~/Videos
     if [ $? -eq 0 ]
     then
 	print "\x1b[32;1m~/Videos unmounted successfully!\x1b[31;1m"
