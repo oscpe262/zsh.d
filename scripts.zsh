@@ -1,4 +1,11 @@
 ## RANDOM SCRIPTS
+murar() {
+    for f in *
+    do	
+	unrar e $f/*.rar $1/$f &&	
+    done
+    }
+
 photosort() {
     for f in *.jpg
     do
