@@ -32,8 +32,8 @@
     alias cls='reset'
     alias fucking='sudo'
     alias ponysay='ponysay -Wi'
-    alias urar='unrar e *.rar'
-    alias uprar='unrar e *.part01.rar'
+    #alias urar='unrar e *.rar'
+    #alias uprar='unrar e *.part01.rar'
 
   ## PRIVILEGED ACCESS
     alias reboot='sudo reboot'
