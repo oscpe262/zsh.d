@@ -1,6 +1,6 @@
 ## /etc/zsh/zshrc - ZSH SHELL CONFIG GLOBAL
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/splatrat/.local/bin/pintos"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/splatrat/.local/bin/pintos:/home/splatrat/.local/bin"
 export LANG=en_GB.UTF-8
 setopt appendhistory autocd nomatch notify nohashdirs
 unsetopt beep extendedglob
@@ -20,8 +20,6 @@ ZSH_THEME="bullet-train"
 source $ZSHRC/btconf.zsh
 
 plugins=(git)
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr\
-/bin/vendor_perl:/usr/bin/core_perl"
 
 export LANG=en_GB.UTF-8
 
