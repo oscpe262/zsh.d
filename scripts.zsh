@@ -1,10 +1,44 @@
 ## RANDOM SCRIPTS
-murar() {
-    for f in *
-    do	
-	unrar e $f/*.rar $1/$f &&	
-    done
-    }
+urar() {
+    rm $1/*.added
+    rm extlog
+    BASE="/ZFS/Videos"
+exec <<EOF
+`find $1 -mindepth 0 -maxdepth 5 -type f -iname "*.part01.rar" && find $1 -mindepth 0 -maxdepth 5 -type f -iname "*.part001.rar" && find $1 -mindepth 0 -maxdepth 5 -type f -iname "*[A-Zaz].rar"`
+EOF
+while read rar; do
+    if [[ ${rar} = *Formula* ]]; then
+	DEST=/F1/2016/
+        mv `echo ${rar} | sed "s/\/$(basename ${rar})//"` ${DEST}
+	break
+    elif [[ ${rar} = *S[0-9][0-9]E* ]]; then
+	MOV=0
+	DEST=/TV/`echo $(basename $(dirname ${rar})) | sed 's/\.S[0-9][0-9]E.*//'`/
+    elif [[ ${rar} = *720* ]];then
+	MOV=720p
+	DEST=/Movies/720p/$(basename $(dirname ${rar}))/
+    elif [[ ${rar} = *1080* ]]; then
+	MOV=1080p
+	DEST=/Movies/1080p/$(basename $(dirname ${rar}))/
+    else
+	MOV=SD
+	DEST=/Movies/SD/$(basename $(dirname ${rar}))/
+    fi
+    if [[ ${rar} = *Subs* ]]; then
+	# Assuming no subs for SD movies
+	if [[ ${MOV} != 0 ]]; then
+	    DEST=/Movies/${MOV}/$(basename $(dirname $(dirname ${rar})))/Subs/
+	else
+	    DEST=/TV/`echo $(basename $(dirname $(dirname ${rar}))) | sed 's/\.S[0-9][0-9]E.*//'`/
+	fi
+    fi
+    unrar e -o- ${rar} ${BASE}${DEST}
+    [[ $? == 0 ]] && echo -e "`tput setaf 2`Success:`tput sgr 0` ${rar}  to  ${BASE}${DEST}" >> extlog || echo -e "`tput setaf 1`Failed ($?):`tput sgr 0` ${rar} to ${BASE}${DEST}" >> extlog
+done
+cat extlog
+rm extlog
+}
+
 
 photosort() {
     for f in *.jpg
