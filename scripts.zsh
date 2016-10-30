@@ -35,6 +35,7 @@ while read rar; do
     unrar e -o- ${rar} ${BASE}${DEST}
     [[ $? == 0 ]] && echo -e "`tput setaf 2`Success:`tput sgr 0` ${rar}  to  ${BASE}${DEST}" >> extlog || echo -e "`tput setaf 1`Failed ($?):`tput sgr 0` ${rar} to ${BASE}${DEST}" >> extlog
 done
+tput clear
 cat extlog
 rm extlog
 }
